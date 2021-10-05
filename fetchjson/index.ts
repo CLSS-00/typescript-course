@@ -4,10 +4,17 @@ import axios from 'axios';
 
 const HOST = 'https://jsonplaceholder.typicode.com';
 
+interface Todo {
+  userId: number;
+  id: number;
+  title: string;
+  completed: boolean;
+}
+
 axios
   .get(`${HOST}/todos/1`)
   .then(({ data }) => {
-    const { id, title, completed } = data;
+    const { id, title, completed } = data as Todo;
     console.log(`
     The todo with ID: ${id}
     Has a title of: ${title}
